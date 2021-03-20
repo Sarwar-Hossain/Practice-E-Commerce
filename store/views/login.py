@@ -6,8 +6,11 @@ from django.contrib.sessions.models import Session
 
 
 class Login(View):
+    @staticmethod
     def get(self, request):
         return render(request, 'login.html')
+
+    @staticmethod
     def post(self, request):
         email = request.POST.get('email')
         password = request.POST.get('password')
