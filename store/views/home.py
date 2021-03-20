@@ -5,6 +5,8 @@ from django.views import View
 
 # Create your views here.
 # Index Page
+
+
 class Index(View):
 
     def post(self, request):
