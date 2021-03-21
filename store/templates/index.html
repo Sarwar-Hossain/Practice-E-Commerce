@@ -1,4 +1,4 @@
- {% extends 'base.html' %} {% block content %} {% load cart %}
+ {% extends 'base.html' %} {% block content %} {% load cart %} {% load custom_filter %}
 
 <!-- Body -->
 <div class="container-fluid mt-3">
@@ -23,7 +23,7 @@
                     <img height="300" width="262" src="{{product.image.url}}" class="card-img-top," alt="Card image cap">
                     <div class="card-body">
                         <p class="card-title">{{product.name}}</p> <br>
-                        <p class="card-title"><b>Price-{{product.price}}</b></p>
+                        <p class="card-title"><b>Price- {{product.price|currency}}</b></p>
                         {% comment %} {{product|is_in_cart:request.session.cart}} {% endcomment %}
                         <p class="card-text">{{product.description}}</p>
 
