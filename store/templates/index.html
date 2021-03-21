@@ -19,7 +19,7 @@
             <div class="row mx-auto">
                 {% for product in products %}
 
-                <div class="card mx-auto mb-3" style="width: 18rem;">
+                <div class="card mx-auto mb-3" id= {{product.id}} style="width: 18rem;">
                     <img height="300" width="262" src="{{product.image.url}}" class="card-img-top," alt="Card image cap">
                     <div class="card-body">
                         <p class="card-title">{{product.name}}</p> <br>
@@ -31,21 +31,21 @@
                     <div class="card-footer p-0 nu-gutters">
                     {% if product|is_in_cart:request.session.cart %}
                     <div class="row nu-gutters">
-                        <form action="" class="col-2" method="post">
+                        <form action="/#{{product.id}}" class="col-2" method="post">
                             {% csrf_token %}
                             <input hidden name="product" type="text" value="{{product.id}}">
                             <input hidden name="remove" type="text" value="True">
                             <input type="submit" value=" - " class=" btn btn-block btn-secondary">
                         </form>
                         <div class="text-center col">{{product|cart_quantity:request.session.cart}} in Cart</div>
-                        <form action="" class="col-2" method="post">
+                        <form action="/#{{product.id}}" class="col-2" method="post">
                             {% csrf_token %}
                             <input hidden name="product" type="text" value="{{product.id}}">
                             <input type="submit" value=" + " class=" btn btn-block btn-secondary">
                         </form>
                     </div>
                     {% else %}
-                    <form action="/" method="post" class="btn-block">
+                    <form action="/#{{product.id}}" method="post" class="btn-block">
                         {% csrf_token %}
                         <input hidden name="product" type="text" value="{{product.id}}">
                         <input type="submit" class="float-right btn btn-primary border form-control" value="Add To Cart">
