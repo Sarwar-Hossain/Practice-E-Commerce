@@ -10,7 +10,9 @@ class Product(models.Model):
     description = models.CharField(max_length=400, default="", null=True, blank=True)
     image = models.ImageField(upload_to="upload/products/")
     
-    
+    def __str__(self):
+        return self.name
+
     @staticmethod
     def get_all_products(request):
         return Product.objects.all()

@@ -8,7 +8,10 @@ class Customer(models.Model):
     password = models.CharField(max_length=500)
     repassword = models.CharField(max_length=500, default='')
 
-          
+
+    def __str__(self):
+        return self.first_name
+
     def is_exits(self):
         if Customer.objects.filter(email=self.email):
             return True
